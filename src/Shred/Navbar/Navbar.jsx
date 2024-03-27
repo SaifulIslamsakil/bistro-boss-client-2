@@ -23,7 +23,7 @@ const Navbar = () => {
             name: "our menu"
         },
         {
-            pathName: "/our shop",
+            pathName: "/our_shop",
             name: "our shop"
         },
         {
@@ -55,7 +55,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex ">
-                <ul className="menu menu-horizontal px-1 space-x-3  uppercase ">
+                <ul className="menu menu-horizontal px-1 space-x-2  uppercase ">
                     {
                         menuItms.map(menu => <li key={menu}><Link to={menu.pathName}>{menu.name}</Link></li>)
                     }
