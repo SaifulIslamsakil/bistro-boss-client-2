@@ -7,7 +7,6 @@ import silder2 from "../../../assets/home/slide2.jpg"
 import silder3 from "../../../assets/home/slide3.jpg"
 import silder4 from "../../../assets/home/slide4.jpg"
 import silder5 from "../../../assets/home/slide5.jpg"
-// import silder6 from "../../../assets/home/slide6.jpg"
 import SectionHadding from "../../../Shred/SectionHadding/SectionHading"
 const Category = () => {
     return (
@@ -42,7 +41,7 @@ const Category = () => {
                     <SwiperSlide><img src={silder5} alt="" />
                         <p className=" text-2xl font-bold -mt-10 text-white text-center">Salads</p>
                     </SwiperSlide>
-                    {/* <SwiperSlide><img src={silder6} alt="" /></SwiperSlide> */}
+                   
 
                 </Swiper>
             </div>
