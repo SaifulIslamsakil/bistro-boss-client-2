@@ -4,12 +4,13 @@ import Category from "../Category/Category";
 import Feature from "../Feature/Feature";
 import Menu from "../Menu/Menu";
 import ShouldTry from "../ShouldTry/ShouldTry";
+import TestiMonials from "../TestiMonials/TestiMonials";
 
 
 
 const Home = () => {
     return (
-        <div className=" space-y-10">
+        <div className=" space-y-10 mb-10">
             <Banner></Banner>
             <Category></Category>
             <Blog></Blog>
@@ -19,6 +20,7 @@ const Home = () => {
             </div>
             <ShouldTry></ShouldTry>
             <Feature></Feature>
+            <TestiMonials></TestiMonials>
         </div>
     );
 };
