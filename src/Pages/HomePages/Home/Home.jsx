@@ -1,6 +1,7 @@
 import Banner from "../Banner/Banner";
 import Blog from "../Blog/Blog";
 import Category from "../Category/Category";
+import Menu from "../Menu/Menu";
 
 
 
@@ -10,6 +11,7 @@ const Home = () => {
             <Banner></Banner>
             <Category></Category>
             <Blog></Blog>
+            <Menu></Menu>
         </div>
     );
 };
