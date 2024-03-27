@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
     const menuItms = [
         {
@@ -17,7 +19,7 @@ const Navbar = () => {
             name: "my card"
         },
         {
-            pathName: "/our menu",
+            pathName: "/our_menu",
             name: "our menu"
         },
         {
@@ -42,7 +44,7 @@ const Navbar = () => {
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         {
-                            menuItms.map(menu => <li key={menu}>{menu.name}</li>)
+                            menuItms.map(menu => <li key={menu}><Link to={menu.pathName}>{menu.name}</Link></li>)
                         }
 
                     </ul>
@@ -55,7 +57,7 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex ">
                 <ul className="menu menu-horizontal px-1 space-x-3  uppercase ">
                     {
-                        menuItms.map(menu => <li key={menu}>{menu.name}</li>)
+                        menuItms.map(menu => <li key={menu}><Link to={menu.pathName}>{menu.name}</Link></li>)
                     }
 
                 </ul>
