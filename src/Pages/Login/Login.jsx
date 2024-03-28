@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import img from "../../assets/reservation/wood-grain-pattern-gray1x.png"
 import img2 from "../../assets/others/authentication2.png"
+import Socal from "../../Shred/Socal/Socal";
 const Login = () => {
     const {
         register,
@@ -13,11 +14,12 @@ const Login = () => {
         console.log(data)
      }
     return (
-        <div className=" h-screen w-full p-10 items-center flex" style={{ backgroundImage: `url(${img})` }}>
-            <div className=" flex-1 ">
+        <div className=" h-full lg:h-screen w-full p-10 items-center md:flex" style={{ backgroundImage: `url(${img})` }}>
+            <div className=" md:flex-1 ">
                 <img className=" " src={img2} alt="" />
             </div>
-            <div className=" flex-1  card-body">
+            <div className=" md:flex-1  card-body">
+                <h3 className=" text-center text-2xl font-semibold">Please Login</h3>
                 <form onSubmit={handleSubmit(onSubmit)} >
 
                     <div className="form-control">
@@ -51,7 +53,9 @@ const Login = () => {
                     <p className=" text-2xl text-center"><small>your need  an accout <Link to="/register" className=" text-red-600 hover:underline">please Register</Link> </small></p>
                 </div>
                 <div className="divider divider-error">OR</div>
-                
+                <div>
+                    <Socal></Socal>
+                </div>
             </div>
         </div>
     );

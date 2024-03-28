@@ -5,7 +5,7 @@ import Navbar from "../../Shred/Navbar/Navbar";
 const MainlayOut = () => {
     const location = useLocation()
     console.log(location)
-    const noHeaderFooter = location.pathname.includes("Register") || location.pathname.includes("login")
+    const noHeaderFooter = location.pathname.includes("register") || location.pathname.includes("login")
     return (
         <div>
             {noHeaderFooter || <Navbar></Navbar>}
