@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import Dashbord from "../Pages/Dashbord/Dashbord";
 import DasHome from "../Pages/Dashbord/DasHome/DasHome";
 import DasCard from "../Pages/Dashbord/DasCard/DasCard";
+import AddItem from "../Pages/Dashbord/AddItem/AddItem";
 
 const Route = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const Route = createBrowserRouter([
             {
                 path:"/dashbord/my_card",
                 element:<DasCard></DasCard>
+            },
+            {
+                path:"/dashbord/add_item",
+                element:<AddItem></AddItem>
             },
         ]
     }

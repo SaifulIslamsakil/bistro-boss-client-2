@@ -3,7 +3,6 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { LuMenuSquare } from "react-icons/lu";
 import { FaBagShopping } from "react-icons/fa6";
 import { IoIosContact } from "react-icons/io";
-import { HiTemplate } from "react-icons/hi";
 
 const Dashbord = () => {
     return (
@@ -25,7 +24,7 @@ const Dashbord = () => {
 
                             <div className=" flex gap-2 items-center  text-2xl font-bold">
                                 <span><FaHome /></span>
-                                <NavLink to="/Dashboard/AddItem">
+                                <NavLink to="/dashbord/add_item">
                                     add items
                                 </NavLink>
                             </div>
