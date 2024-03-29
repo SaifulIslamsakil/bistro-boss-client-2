@@ -46,7 +46,7 @@ const DasCard = () => {
             <div className=" flex justify-evenly items-center rounded-lg my-5 font-bold text-2xl ">
                 <p>Total orders: {data?.length}</p>
                 <p>Total price: ${totalPrices}</p>
-                <Link to="/Dashboard/reservation">
+                <Link to="/dashbord/reservation">
                     <button className="  btn-secondary btn">pay </button>
                 </Link>
             </div>

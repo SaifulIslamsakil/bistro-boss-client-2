@@ -12,6 +12,7 @@ import AddItem from "../Pages/Dashbord/AddItem/AddItem";
 import ManageItems from "../Pages/Dashbord/ManageItems/ManageItems";
 import UpdateMenu from "../Pages/Dashbord/UpdateMenu/UpdateMenu";
 import Private from "../Private/Private";
+import Reservation from "../Pages/Dashbord/Reservation/Reservation";
 
 const Route = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const Route = createBrowserRouter([
             {
                 path:"/dashbord/add_item",
                 element:<AddItem></AddItem>
+            },
+            {
+                path:"/dashbord/reservation",
+                element:<Reservation></Reservation>
             },
             {
                 path:"/dashbord/manage_items",
