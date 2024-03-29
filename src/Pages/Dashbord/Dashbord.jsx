@@ -76,8 +76,8 @@ const Dashbord = () => {
                             <div className=" flex gap-2 items-center  text-2xl font-bold">
 
                                 <span><FaHome /></span>
-                                <NavLink to="/Dashboard/Card">
-                                    my cart
+                                <NavLink to="/dashbord/my_card">
+                                    my card
                                 </NavLink>
                             </div>
                             <div className=" flex gap-2 items-center  text-2xl font-bold">

@@ -6,6 +6,8 @@ import OurShop from "../Pages/OurShopPages/OurShop/OurShop";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Dashbord from "../Pages/Dashbord/Dashbord";
+import DasHome from "../Pages/Dashbord/DasHome/DasHome";
+import DasCard from "../Pages/Dashbord/DasCard/DasCard";
 
 const Route = createBrowserRouter([
     {
@@ -38,11 +40,16 @@ const Route = createBrowserRouter([
     {
         path:"/dashbord",
         element:<Dashbord></Dashbord>,
-        // children:[
-        //     {
-        //         path:"/Dashbord"
-        //     }
-        // ]
+        children:[
+            {
+                path:"/dashbord",
+                element:<DasHome></DasHome>
+            },
+            {
+                path:"/dashbord/my_card",
+                element:<DasCard></DasCard>
+            },
+        ]
     }
 ])
 
