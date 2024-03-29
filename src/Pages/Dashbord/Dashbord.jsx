@@ -31,7 +31,7 @@ const Dashbord = () => {
 
                             <div className=" flex gap-2 items-center  text-2xl font-bold">
                                 <span><FaHome /></span>
-                                <NavLink to="/Dashboard/ManageItems">
+                                <NavLink to="/dashbord/manage_items">
                                     manage items
                                 </NavLink>
                             </div>

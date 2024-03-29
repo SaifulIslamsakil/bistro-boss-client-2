@@ -9,6 +9,7 @@ import Dashbord from "../Pages/Dashbord/Dashbord";
 import DasHome from "../Pages/Dashbord/DasHome/DasHome";
 import DasCard from "../Pages/Dashbord/DasCard/DasCard";
 import AddItem from "../Pages/Dashbord/AddItem/AddItem";
+import ManageItems from "../Pages/Dashbord/ManageItems/ManageItems";
 
 const Route = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const Route = createBrowserRouter([
             {
                 path:"/dashbord/add_item",
                 element:<AddItem></AddItem>
+            },
+            {
+                path:"/dashbord/manage_items",
+                element:<ManageItems></ManageItems>
             },
         ]
     }
