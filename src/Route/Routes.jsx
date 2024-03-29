@@ -13,6 +13,7 @@ import ManageItems from "../Pages/Dashbord/ManageItems/ManageItems";
 import UpdateMenu from "../Pages/Dashbord/UpdateMenu/UpdateMenu";
 import Private from "../Private/Private";
 import Reservation from "../Pages/Dashbord/Reservation/Reservation";
+import AllUser from "../Pages/Dashbord/AllUser/AllUser";
 
 const Route = createBrowserRouter([
     {
@@ -70,6 +71,11 @@ const Route = createBrowserRouter([
                 path:"/dashbord/update_menu/:id",
                 element:<Private><UpdateMenu></UpdateMenu></Private>,
                 loader: ({params})=> fetch(`http://localhost:5000/menu/${params.id}`)
+            },
+            {
+                path:"/dashbord/all_user",
+                element:<AllUser></AllUser>,
+               
             },
         ]
     }

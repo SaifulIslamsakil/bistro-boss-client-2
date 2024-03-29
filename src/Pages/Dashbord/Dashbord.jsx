@@ -43,7 +43,7 @@ const Dashbord = () => {
                             </div>
                             <div className=" flex gap-2 items-center  text-2xl font-bold">
                                 <span><FaHome /></span>
-                                <NavLink to="/Dashboard/AllUser">
+                                <NavLink to="/dashbord/all_user">
                                     all users
                                 </NavLink>
                             </div>
