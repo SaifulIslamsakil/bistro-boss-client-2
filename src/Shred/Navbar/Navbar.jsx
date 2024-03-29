@@ -23,7 +23,7 @@ const Navbar = () => {
             name: "our menu"
         },
         {
-            pathName: "/our_shop",
+            pathName: "/our_shop/salad",
             name: "our shop"
         },
         {
@@ -32,7 +32,7 @@ const Navbar = () => {
         },
         {
             pathName: "/register",
-            name: "Register"
+            name: "register"
         },
     ]
     const menus =

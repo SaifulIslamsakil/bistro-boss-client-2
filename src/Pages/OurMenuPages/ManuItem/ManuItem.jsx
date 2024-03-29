@@ -24,7 +24,7 @@ const ManuItem = ({menuCategory}) => {
                 </div>)}
             </div>
             <div className="flex justify-center">
-                <Link to={`/ourshop/${menuCategory}`}>
+                <Link to={`/our_shop/${menuCategory}`}>
                     <button className=" rounded-lg  text-xl font-bold text-yellow-600 border-yellow-600 border-b-4 py-3 px-5 hover:bg-black hover:text-white">ORDER YOUR FAVOURITE FOOD</button>
                 </Link>
             </div>

@@ -34,11 +34,11 @@ const Register = () => {
     }
     return (
         <div className="  w-full p-10 " style={{ backgroundImage: `url(${img})` }}>
-            <div className="items-center flex">
-                <div className=" flex-1">
-                    <img className=" " src={img2} alt="" />
+            <div className="items-center lg:flex">
+                <div className=" md:flex-1">
+                    <img  className=" mx-auto " src={img2} alt="" />
                 </div>
-                <div className=" flex-1 card-body">
+                <div className=" md:flex-1 card-body">
                     <h3 className=" text-center font-semibold text-2xl">Please Register</h3>
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className="form-control">

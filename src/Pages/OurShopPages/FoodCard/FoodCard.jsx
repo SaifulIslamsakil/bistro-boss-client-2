@@ -2,7 +2,6 @@ import useMenuData from "../../../Hooks/useManuData/useManuData"
 const FoodCard = ({ menuCategory }) => {
     const [menuData] = useMenuData()
     const categorys = menuData.filter(menu => menu.category === menuCategory)
-    console.log(useMenuData)
     return (
         <div className=" w-11/12 mx-auto grid p-3 lg:px-10  grid-cols-1 md:grid-cols-2 gap-5 mt-5 lg:grid-cols-3">
             {

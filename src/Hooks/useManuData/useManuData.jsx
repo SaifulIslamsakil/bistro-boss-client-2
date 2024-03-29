@@ -4,14 +4,13 @@ const useManuData = () => {
     const [menuData, setManuData] = useState([])
     const [lodding, setLoding] = useState(true)
     useEffect(() => {
-        fetch("menu.json")
+        fetch("http://localhost:5000/menus")
             .then(res => res.json())
             .then(data => {
                 setManuData(data)
                 setLoding(false)
             })
     }, [])
-    console.log(menuData)
     return [menuData, lodding]
 };
 
