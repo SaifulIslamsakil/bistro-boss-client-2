@@ -1,13 +1,21 @@
 import { useForm } from "react-hook-form";
 import img from "../../assets/reservation/wood-grain-pattern-gray1x.png"
 import img2 from "../../assets/others/authentication2.png"
-import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useRef, useState } from "react";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
 import Socal from "../../Shred/Socal/Socal";
+import { AuthContext } from "../../Provider/Provider";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
+import Auth from "../../Firbase/Firbase.confiq";
+import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic"
 const Register = () => {
     const [btnDisabled, setBtnDisabled]= useState(true)
     const captchaRef = useRef(null)
+    const {createUser} = useContext(AuthContext)
+    const AxiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
@@ -30,7 +38,40 @@ const Register = () => {
     }
     
     const onSubmit = (data) => {
-        console.log(data)
+        createUser(data.email, data.password)
+        .then(res=>{
+            updateProfile(Auth.currentUser,{
+                displayName:data?.name, 
+                photoURL:data.photoUrl,
+            })
+            .then(()=>{
+                const userInfo ={
+                    Name:data.name,
+                    email:data.email
+                } 
+                AxiosPublic.post("/user", userInfo)
+                .then(res=>{
+                    if(res.data.acknowledged){
+                        Swal.fire({
+                            title: "Good job!",
+                            text: "You Accout suecssfully register!",
+                            icon: "success"
+                        });
+                        reset()
+                        navigate("/")
+                       }
+                })
+            })
+        })
+        .catch(err=>{
+           if(err){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+              });
+           }
+        })
     }
     return (
         <div className="  w-full p-10 " style={{ backgroundImage: `url(${img})` }}>
