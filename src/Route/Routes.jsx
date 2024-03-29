@@ -5,6 +5,7 @@ import OurMenu from "../Pages/OurMenuPages/OurMenu/OurMenu";
 import OurShop from "../Pages/OurShopPages/OurShop/OurShop";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
+import Dashbord from "../Pages/Dashbord/Dashbord";
 
 const Route = createBrowserRouter([
     {
@@ -33,6 +34,15 @@ const Route = createBrowserRouter([
                 element:<Login></Login>
             },
         ]
+    },
+    {
+        path:"/dashbord",
+        element:<Dashbord></Dashbord>,
+        // children:[
+        //     {
+        //         path:"/Dashbord"
+        //     }
+        // ]
     }
 ])
 
