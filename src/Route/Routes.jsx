@@ -10,6 +10,8 @@ import DasHome from "../Pages/Dashbord/DasHome/DasHome";
 import DasCard from "../Pages/Dashbord/DasCard/DasCard";
 import AddItem from "../Pages/Dashbord/AddItem/AddItem";
 import ManageItems from "../Pages/Dashbord/ManageItems/ManageItems";
+import UpdateMenu from "../Pages/Dashbord/UpdateMenu/UpdateMenu";
+import Private from "../Private/Private";
 
 const Route = createBrowserRouter([
     {
@@ -58,6 +60,11 @@ const Route = createBrowserRouter([
             {
                 path:"/dashbord/manage_items",
                 element:<ManageItems></ManageItems>
+            },
+            {
+                path:"/dashbord/update_menu/:id",
+                element:<Private><UpdateMenu></UpdateMenu></Private>,
+                loader: ({params})=> fetch(`http://localhost:5000/menu/${params.id}`)
             },
         ]
     }

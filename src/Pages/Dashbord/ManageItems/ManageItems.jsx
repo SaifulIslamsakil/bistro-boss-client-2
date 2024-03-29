@@ -14,7 +14,6 @@ const ManageItems = () => {
             return res.data
         },
     })
-    console.log(manuItems)
     const handelManuDelete = (id)=>{
         Swal.fire({
             title: "Are you sure?",
@@ -97,7 +96,7 @@ const ManageItems = () => {
                                     </td>
                                     <td className=" text-lg font-bold">$ {manuItem.price}</td>
                                     <th className=" flex gap-3 mt-4 ">
-                                        <Link to={`/Dashboard/updateItems/${manuItem._id}`}>
+                                        <Link to={`/dashbord/update_menu/${manuItem._id}`}>
                                             <button className="btn bg-yellow-500 hover:bg-yellow-700 btn-ghost text-white">
                                                <span className="text-xl"> <FaRegEdit /></span>
                                             </button>
