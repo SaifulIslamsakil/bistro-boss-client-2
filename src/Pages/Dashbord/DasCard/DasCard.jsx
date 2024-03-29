@@ -1,11 +1,41 @@
 import { Link } from "react-router-dom";
 import SectionHading from "../../../Shred/SectionHadding/SectionHading";
 import { MdDelete } from "react-icons/md";
+import useCard from "../../../Hooks/useCard/useCard";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const DasCard = () => {
-    const handelDelete = (id)=>[
-        console.log(id)
-    ]
+    const { data, refetch } = useCard()
+    const AxiosPublic = useAxiosPublic()
+    const totalPrices = data?.reduce((sum, itms) => sum + itms?.ProductPrice, 0)
+    console.log(totalPrices, data)
+    const handelDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                AxiosPublic.delete(`/card/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                        refetch()
+                    })
+            }
+        });
+    }
+
     return (
         <div className=" p-10">
             <SectionHading
@@ -14,8 +44,8 @@ const DasCard = () => {
             >
             </SectionHading>
             <div className=" flex justify-evenly items-center rounded-lg my-5 font-bold text-2xl ">
-                <p>Total orders: {"cards?.length"}</p>
-                <p>total price: ${"totalPrices"}</p>
+                <p>Total orders: {data?.length}</p>
+                <p>Total price: ${totalPrices}</p>
                 <Link to="/Dashboard/reservation">
                     <button className="  btn-secondary btn">pay </button>
                 </Link>
@@ -35,18 +65,18 @@ const DasCard = () => {
                     <tbody>
                         {/* row 1 */}
 
-
-                         <tr className=" h-24">
+                        {
+                            data?.map((card, ids) => <tr key={card._id} className=" h-24">
                                 <th>
                                     <label className="text-2xl font-bold">
-                                        {"ids + 1"}
+                                        {ids + 1}
                                     </label>
                                 </th>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-20 h-20">
-                                                <img src={"card.ProductImg"} />
+                                                <img src={card.ProductImg} />
                                             </div>
                                         </div>
 
@@ -54,16 +84,17 @@ const DasCard = () => {
                                 </td>
                                 <td>
                                     <div className=" text-xl font-bold">
-                                        {"card.ProductName"}
+                                        {card.ProductName}
                                     </div>
                                 </td>
-                                <td className=" font-bold">$ {"card.ProductPrice"}</td>
+                                <td className=" font-bold">$ {card.ProductPrice}</td>
                                 <th>
-                                    <button onClick={() => handelDelete("card._id")} className="btn bg-red-500 btn-ghost text-white">
-                                       <span><MdDelete /></span>
+                                    <button onClick={() => handelDelete(card._id)} className="btn hover:bg-red-700 bg-red-500 btn-ghost text-white text-2xl">
+                                        <span><MdDelete /></span>
                                     </button>
                                 </th>
-                            </tr>
+                            </tr>)
+                        }
                     </tbody>
 
                 </table>

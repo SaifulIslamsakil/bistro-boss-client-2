@@ -6,14 +6,14 @@ import { useQuery } from "@tanstack/react-query";
 const useCard = () => {
     const { user } = useContext(AuthContext)
     const AxiosPublic = useAxiosPublic()
-    const { data, refetch } = useQuery({
+    const {data, refetch  } = useQuery({
         queryKey: ["card", user?.email],
         queryFn: async () => {
             const res = await AxiosPublic.get(`/card?email=${user.email}`)
             return res.data
         }
     })
-    return { data, refetch }
+    return {data, refetch}
 };
 
 export default useCard;
