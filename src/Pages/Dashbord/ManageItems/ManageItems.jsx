@@ -13,8 +13,8 @@ const ManageItems = () => {
             const res = await AxiosPublic.get("/menus")
             return res.data
         },
-
     })
+    console.log(manuItems)
     const handelManuDelete = (id)=>{
         Swal.fire({
             title: "Are you sure?",
