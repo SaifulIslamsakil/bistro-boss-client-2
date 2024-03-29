@@ -3,8 +3,11 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { LuMenuSquare } from "react-icons/lu";
 import { FaBagShopping } from "react-icons/fa6";
 import { IoIosContact } from "react-icons/io";
+import useAdmin from "../../Hooks/useAdmin/useAdmin";
 
 const Dashbord = () => {
+    const isAdmin = useAdmin()
+    console.log(isAdmin)
     return (
         <div>
             <div className=" flex">
