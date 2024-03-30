@@ -1,18 +1,45 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/reservation/wood-grain-pattern-gray1x.png"
 import img2 from "../../assets/others/authentication2.png"
 import Socal from "../../Shred/Socal/Socal";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/Provider";
+import Swal from "sweetalert2";
 const Login = () => {
+    const { userLogin } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm()
     const onSubmit = (data) => {
-       
-        console.log(data)
-     }
+        userLogin(data.email, data.password)
+            .then(res => {
+                if(res){
+                    Swal.fire({
+                        title: "Good job!",
+                        text: "You Accout suecssfully Login!",
+                        icon: "success"
+                    });
+                    navigate("/")
+                }
+            })
+            .catch(err => {
+                if(err){
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                      });
+                      reset()
+                }
+            })
+    }
     return (
         <div className=" h-full lg:h-screen w-full p-10 items-center md:flex" style={{ backgroundImage: `url(${img})` }}>
             <div className=" md:flex-1 ">

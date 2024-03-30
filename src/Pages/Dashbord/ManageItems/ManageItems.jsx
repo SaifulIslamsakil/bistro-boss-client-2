@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic/useAxiosPublic"
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure"
 import SectionHadding from "../../../Shred/SectionHadding/SectionHading"
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 const ManageItems = () => {
-    const AxiosPublic = useAxiosPublic()
+    const AxiosSecure = useAxiosSecure()
     const { data: manuItems = [], refetch } = useQuery({
         queryKey: "manu",
         queryFn: async () => {
-            const res = await AxiosPublic.get("/menus")
+            const res = await AxiosSecure.get("/menus")
             return res.data
         },
     })
@@ -26,7 +26,7 @@ const ManageItems = () => {
           }).then((result) => {
             if (result.isConfirmed) {
 
-                AxiosPublic.delete(`/manu_item_delete/${id}`)
+                AxiosSecure.delete(`/manu_item_delete/${id}`)
                 .then(res=>{
                     if(res.data.deletedCount>0){
                         Swal.fire({

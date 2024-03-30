@@ -1,12 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import SectionHading from "../../../Shred/SectionHadding/SectionHading";
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import Swal from "sweetalert2";
 import img from "../../../assets/reservation/wood-grain-pattern-gray1x.png"
 const UpdateMenu = () => {
     const menuData = useLoaderData()
-    const AxiosPublice = useAxiosPublic()
+    const AxiosSecure = useAxiosSecure()
     const {
         register,
         handleSubmit,
@@ -21,7 +21,7 @@ const UpdateMenu = () => {
             recipe : data.detiles
         }
         
-        AxiosPublice.patch(`/update_menu/${menuData?._id}`, updateInfo)
+        AxiosSecure.patch(`/update_menu/${menuData?._id}`, updateInfo)
         .then(res=>{
             if(res.data.modifiedCount>0){
                 Swal.fire({

@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import SectionHading from "../../../Shred/SectionHadding/SectionHading";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 const AllUser = () => {
-    const AxiosPublic = useAxiosPublic()
+    const AxiosSecure = useAxiosSecure()
     const { data: allUsers = [], refetch } = useQuery({
         queryKey: "all User",
         queryFn: async () => {
-            const res = await AxiosPublic.get("/user")
+            const res = await AxiosSecure.get("/user")
             return res.data
         }
     })
@@ -24,7 +24,7 @@ const AllUser = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                AxiosPublic.delete(`/user/${id}`)
+                AxiosSecure.delete(`/user/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -51,7 +51,7 @@ const AllUser = () => {
             confirmButtonText: "Yes, got it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                AxiosPublic.patch(`/user/${id}`)
+                AxiosSecure.patch(`/user/${id}`)
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire({

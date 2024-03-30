@@ -14,6 +14,15 @@ import UpdateMenu from "../Pages/Dashbord/UpdateMenu/UpdateMenu";
 import Private from "../Private/Private";
 import Reservation from "../Pages/Dashbord/Reservation/Reservation";
 import AllUser from "../Pages/Dashbord/AllUser/AllUser";
+import AdminHome from "../Pages/Dashbord/AdminHome/AdminHome";
+import ManageBookings from "../Pages/Dashbord/Manage_bookings/ManageBookings"
+import UserHome from "../Pages/Dashbord/UserHome/UserHome"
+import PaymentHistory from "../Pages/Dashbord/Payment_History/PaymentHistory"
+import AddReview from "../Pages/Dashbord/add review/AddReview"
+import MyBooking from "../Pages/Dashbord/my_booking/MyBooking"
+import AdminPrivate from "../Provider/AdminPrivate/AdminPrivate";
+import ManuItem from "../Pages/OurMenuPages/ManuItem/ManuItem";
+import Payment from "../Pages/Dashbord/Payment/Payment";
 
 const Route = createBrowserRouter([
     {
@@ -45,36 +54,65 @@ const Route = createBrowserRouter([
     },
     {
         path:"/dashbord",
-        element:<Dashbord></Dashbord>,
+        element:<Private><Dashbord></Dashbord></Private>,
         children:[
             {
                 path:"/dashbord",
-                element:<DasHome></DasHome>
+                element:<Private><DasHome></DasHome></Private>
+            },
+            {
+                path:"/dashbord/admin_home",
+                element:<Private><AdminPrivate><AdminHome></AdminHome></AdminPrivate></Private>
             },
             {
                 path:"/dashbord/my_card",
-                element:<DasCard></DasCard>
+                element:<Private><DasCard></DasCard></Private>
             },
             {
                 path:"/dashbord/add_item",
-                element:<AddItem></AddItem>
+                element:<Private><AdminPrivate><AddItem></AddItem></AdminPrivate></Private>
             },
             {
-                path:"/dashbord/reservation",
-                element:<Reservation></Reservation>
+                path:"/dashbord/payment",
+                element:<Private><Payment></Payment></Private>
             },
             {
                 path:"/dashbord/manage_items",
-                element:<ManageItems></ManageItems>
+                element:<Private><AdminPrivate><ManageItems></ManageItems></AdminPrivate></Private>
             },
             {
                 path:"/dashbord/update_menu/:id",
-                element:<Private><UpdateMenu></UpdateMenu></Private>,
-                loader: ({params})=> fetch(`http://localhost:5000/menu/${params.id}`)
+                element:<Private><AdminPrivate><UpdateMenu></UpdateMenu></AdminPrivate></Private>,
+                loader: ({params})=> fetch(`https://bistro-boss-server-2-gamma.vercel.app/menu/${params.id}`)
             },
             {
                 path:"/dashbord/all_user",
-                element:<AllUser></AllUser>,
+                element:<Private><AdminPrivate><AllUser></AllUser></AdminPrivate></Private>,
+               
+            },
+            {
+                path:"/dashbord/manage_bookings",
+                element:<Private><AdminPrivate></AdminPrivate></Private>,
+               
+            },
+            {
+                path:"/dashbord/user_home",
+                element:<Private><UserHome></UserHome></Private>,
+               
+            },
+            {
+                path:"/dashbord/payment_history",
+                element:<Private><PaymentHistory></PaymentHistory></Private>,
+               
+            },
+            {
+                path:"/dashbord/my_booking",
+                element:<Private><MyBooking></MyBooking></Private>,
+               
+            },
+            {
+                path:"/dashbord/add_review",
+                element:<Private><AddReview></AddReview></Private>,
                
             },
         ]

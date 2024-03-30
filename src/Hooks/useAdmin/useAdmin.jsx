@@ -9,7 +9,7 @@ const useAdmin = () => {
         queryKey:["admin", user?.email],
         queryFn:async()=>{
            const res = await AxiosPublice.get(`/user/${user?.email}`)
-           return res.data.isAdmin
+           return res.data
         }
        })
 

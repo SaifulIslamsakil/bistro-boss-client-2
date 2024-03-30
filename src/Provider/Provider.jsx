@@ -1,11 +1,13 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import Auth from "../Firbase/Firbase.confiq";
+import useAxiosPublic from "../Hooks/useAxiosPublic/useAxiosPublic";
 
 export const AuthContext = createContext(null)
 const Provider = ({ children }) => {
     const [user, setUser] = useState()
     const [lodding, setLodding] = useState(true)
+    const AxiosPublice = useAxiosPublic()
     const createUser = (email, password) => {
         setLodding(true)
         return createUserWithEmailAndPassword(Auth, email, password)
@@ -20,9 +22,23 @@ const Provider = ({ children }) => {
     }
 
     useEffect(()=>{
-        const unsubcriber = onAuthStateChanged(Auth, createUser =>{
-            setUser(createUser)
+        const unsubcriber = onAuthStateChanged(Auth, currentUser =>{
+            setUser(currentUser)
             setLodding(false)
+            if(currentUser){
+                const userInfo ={
+                    email:currentUser?.email
+                   }
+                   AxiosPublice.post("/jwt", userInfo)
+                   .then(res=>{
+                    if(res.data?.token){
+                        localStorage.setItem("access-Token", res.data.token)
+                    }
+                   })
+            }
+            else{
+                localStorage.removeItem("access-Token")
+            }
         })
         return ()=>{
             return unsubcriber

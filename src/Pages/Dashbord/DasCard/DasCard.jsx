@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import SectionHading from "../../../Shred/SectionHadding/SectionHading";
 import { MdDelete } from "react-icons/md";
 import useCard from "../../../Hooks/useCard/useCard";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const DasCard = () => {
     const { data, refetch } = useCard()
-    const AxiosPublic = useAxiosPublic()
+    const AxiosPublic = useAxiosSecure()
     const totalPrices = data?.reduce((sum, itms) => sum + itms?.ProductPrice, 0)
     console.log(totalPrices, data)
     const handelDelete = (id) => {
@@ -46,7 +46,7 @@ const DasCard = () => {
             <div className=" flex justify-evenly items-center rounded-lg my-5 font-bold text-2xl ">
                 <p>Total orders: {data?.length}</p>
                 <p>Total price: ${totalPrices}</p>
-                <Link to="/dashbord/reservation">
+                <Link to="/dashbord/payment">
                     <button className="  btn-secondary btn">pay </button>
                 </Link>
             </div>
